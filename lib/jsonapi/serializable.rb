@@ -22,7 +22,7 @@ module JSONAPI
 
     # @api private
     def self.resource_for(object, options, inferrer)
-      class_name = object.class.name.to_sym
+      class_name = object.class.name.demodulize.to_sym
 
       serializable_klass = inferrer[class_name] || (
         raise UndefinedSerializableClass,
